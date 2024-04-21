@@ -1,0 +1,36 @@
+{% extends "basic.html" %} {% block title %} 영어 번역기 {% endblock %} {% block header %}
+<h2><font color="blue">[영어-다국어 번역기]</font></h2>
+{% endblock %} {% block content %}
+<fieldset>
+    <legend>번역기</legend>
+    <form action="/translate" method="post">
+        <label for="language">영어 -> </label>
+        <select name="language" id="language">
+            <option value="German">독일어</option>
+            <option value="Russian">러시아어</option>
+            <option value="French">프랑스어</option>
+            <option value="Korean">한국어</option></select
+        ><br /><br />
+
+        <label for="Content">번역할 영어 텍스트를 입력하세요</label><br />
+        <textarea name="Content" id="Content" placeholder="Enter Content" cols="100" rows="3"></textarea>
+        <br /><br />
+
+        원문<br />
+        <fieldset>
+            {% if translate_language %} {{translate_language.original_text}}<br />
+            {% else %} No Data<br />
+            {% endif %}
+        </fieldset>
+        <br /><br />
+        번역문<br />
+        <fieldset>
+            {% if translate_language %} {{translate_language.translation_text}}<br />
+            {% else %} No Data<br />
+            {% endif %}
+        </fieldset>
+        <br /><br />
+        <input type="submit" />
+    </form>
+</fieldset>
+{% endblock %}
