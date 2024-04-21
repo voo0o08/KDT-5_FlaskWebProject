@@ -161,3 +161,4 @@ cython_debug/
 .vscode/
 
 이현길/Bible_trans/static/lang_files/
+이현길/Bible_trans/notebook/results/
