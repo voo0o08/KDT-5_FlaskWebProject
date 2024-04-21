@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INPUT</title>
+</head>
+<body>
+    <form action="/input_data" method="post" enctype=multipart/form-data>
+        <label for="lang_text">언어</label><br>
+        <select name="lang_text" id="lang_text">
+            <option value="en">en</option>
+            <option value="ko">ko</option>
+            <option value="de">de</option>
+            <option value="ru">ru</option>
+            <option value="fr">fr</option>
+        </select><br><br>
+
+        <input type="file" id="lang_file" name="lang_file"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
