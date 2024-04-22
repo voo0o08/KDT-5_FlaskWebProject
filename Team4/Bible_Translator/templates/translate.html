@@ -1,36 +1,50 @@
 {% extends "basic.html" %} {% block title %} 영어 번역기 {% endblock %} {% block header %}
-<h2><font color="blue">[영어-다국어 번역기]</font></h2>
+<h1><font>영어 - 다국어 번역기</font></h1>
 {% endblock %} {% block content %}
-<fieldset>
-    <legend>번역기</legend>
+<div class="container">
     <form action="/translate" method="post">
-        <label for="language">영어 -> </label>
-        <select name="language" id="language">
-            <option value="German">독일어</option>
-            <option value="Russian">러시아어</option>
-            <option value="French">프랑스어</option>
-            <option value="Korean">한국어</option></select
-        ><br /><br />
-
-        <label for="Content">번역할 영어 텍스트를 입력하세요</label><br />
-        <textarea name="Content" id="Content" placeholder="Enter Content" cols="100" rows="3"></textarea>
+        <div class="form-row">
+            <label for="language" style="margin-right: 30px;">영어</label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16" style="margin-right: 30px;">
+                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+            </svg> 
+            <select name="language" id="language">
+                <option value="German">독일어</option>
+                <option value="Russian">러시아어</option>
+                <option value="French">프랑스어</option>
+                <option value="Korean">한국어</option>
+            </select>
+        </div>
         <br /><br />
-
-        원문<br />
-        <fieldset>
-            {% if translate_language %} {{translate_language.original_text}}<br />
-            {% else %} No Data<br />
-            {% endif %}
-        </fieldset>
+        <div class="form-row">
+            <textarea name="Content" id="Content" placeholder="번역할 영어 텍스트를 입력하세요" cols="100" rows="3"></textarea>
+        </div>
         <br /><br />
-        번역문<br />
-        <fieldset>
-            {% if translate_language %} {{translate_language.translation_text}}<br />
-            {% else %} No Data<br />
-            {% endif %}
-        </fieldset>
-        <br /><br />
-        <input type="submit" />
+        <div class="form-row">
+            <input type="submit" class="submit"/>
+        </div>
     </form>
-</fieldset>
+</div>
+
+<div class="container">
+    <div class="text-container">
+        <h2>원문</h2>
+        <fieldset>
+            {% if translate_language %} {{translate_language.original_text}}<br>
+            {% else %} No Data<br>
+            {% endif %}
+        </fieldset>
+    </div>
+    <div class="text-container">
+        <h2>번역문</h2>
+        <fieldset>
+            {% if translate_language %} {{translate_language.translation_text}}<br>
+            {% else %} No Data<br>
+            {% endif %}
+        </fieldset>
+    </div>
+</div>
+        
+        <br /><br />
+
 {% endblock %}

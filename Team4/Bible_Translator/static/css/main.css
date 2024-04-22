@@ -1,0 +1,51 @@
+* {
+    font-family: 'JejuGothic', sans-serif;
+    background:white;
+}
+
+
+fieldset {
+    border: 2px solid rgba(39, 105, 245, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(62, 148, 222, 0.1);
+}
+
+.text-container {
+    width: 35%; /* 각 텍스트 컨테이너의 너비 조정 */
+    margin: 0 25px; /* 좌우에 20px의 마진 추가 */
+    
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.icon-container {
+    margin: 0 30px; /* 아이콘과 텍스트 사이 간격 조정 */
+}
+
+
+h1 {
+    padding-top: 30px; /* 위쪽 패딩 설정 */
+    padding-bottom: 40px; /* 아래쪽 패딩 설정 */
+}
+
+
+.submit {
+    background-image: url('../img/submit.png');
+}
+
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    margin-right: 10px;
+}
+
