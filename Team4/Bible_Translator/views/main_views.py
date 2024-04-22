@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 from ..models import Translation
+from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
 from Bible_Translator import db
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os
@@ -30,7 +31,6 @@ def translate():
             db.session.add(t)
             db.session.commit()
     return redirect("/")
-
 
 def translate_langs(select_language, original_text):
     curr_dir = os.getcwd()
