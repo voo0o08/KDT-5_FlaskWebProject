@@ -46,7 +46,16 @@ def translate_langs(select_language, original_text):
         )
         translation_text = tokenizer.batch_decode(germans, skip_special_tokens=True)[0]
     elif select_language == "Russian":
-        translation_text = ""
+        model_dir = curr_dir + "/Bible_Translator/static/russian/result"
+        tokenizer = AutoTokenizer.from_pretrained(model_dir)
+        model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+        inputs = tokenizer(original_text, return_tensors="pt", padding=True)
+        frenchs = model.generate(
+            **inputs,
+            max_length=128,
+            num_beams=5,
+        )
+        translation_text = tokenizer.batch_decode(frenchs, skip_special_tokens=True)[0]
     elif select_language == "French":
         model_dir = curr_dir + "/Bible_Translator/static/french/results"
         tokenizer = AutoTokenizer.from_pretrained(model_dir)
