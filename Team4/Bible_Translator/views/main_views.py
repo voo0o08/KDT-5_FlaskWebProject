@@ -35,54 +35,21 @@ def translate():
 def translate_langs(select_language, original_text):
     curr_dir = os.getcwd()
     if select_language == "German":
-
-        model = MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
-        tokenizer = MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
-
-        tokenizer.src_lang = "en_XX"
-        encoded_en = tokenizer(original_text, return_tensors="pt")
-        generated_tokens = model.generate(
-            **encoded_en,
-            forced_bos_token_id=tokenizer.lang_code_to_id["de_DE"]
-        )
-        translation_text = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
-
+        model_dir = curr_dir + "/Bible_Translator/static/german/results"
     elif select_language == "Russian":
         model_dir = curr_dir + "/Bible_Translator/static/russian/result"
-        tokenizer = AutoTokenizer.from_pretrained(model_dir)
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
-        inputs = tokenizer(original_text, return_tensors="pt", padding=True)
-        frenchs = model.generate(
-            **inputs,
-            max_length=128,
-            num_beams=5,
-        )
-        translation_text = tokenizer.batch_decode(frenchs, skip_special_tokens=True)[0]
     elif select_language == "French":
         model_dir = curr_dir + "/Bible_Translator/static/french/results"
-        tokenizer = AutoTokenizer.from_pretrained(model_dir)
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
-        inputs = tokenizer(original_text, return_tensors="pt", padding=True)
-        frenchs = model.generate(
-            **inputs,
-            max_length=128,
-            num_beams=5,
-        )
-        translation_text = tokenizer.batch_decode(frenchs, skip_special_tokens=True)[0]
     else:
-        # 망한 모델
-        # model_dir1 = curr_dir + "/Bible_Translator/static/korean/result1/eng2kor2.pth"
-        # vocab1 = curr_dir + "/Bible_Translator/static/korean/result1/vocab_transform.pth"
-
         model_dir = curr_dir + "/Bible_Translator/static/korean/result2"
-        tokenizer = AutoTokenizer.from_pretrained(model_dir)
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
-        inputs = tokenizer(original_text, return_tensors="pt", padding=True)
-        frenchs = model.generate(
-            **inputs,
-            max_length=128,
-            num_beams=5,
-        )
-        translation_text = tokenizer.batch_decode(frenchs, skip_special_tokens=True)[0]
+    tokenizer = AutoTokenizer.from_pretrained(model_dir)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+    inputs = tokenizer(original_text, return_tensors="pt", padding=True)
+    frenchs = model.generate(
+        **inputs,
+        max_length=128,
+        num_beams=5,
+    )
+    translation_text = tokenizer.batch_decode(frenchs, skip_special_tokens=True)[0]
 
     return translation_text
