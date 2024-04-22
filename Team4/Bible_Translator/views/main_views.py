@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 from ..models import Translation
+from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
 from Bible_Translator import db
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os
@@ -31,20 +32,21 @@ def translate():
             db.session.commit()
     return redirect("/")
 
-
 def translate_langs(select_language, original_text):
     curr_dir = os.getcwd()
     if select_language == "German":
-        model_dir = curr_dir + "/Bible_Translator/static/german/results"
-        tokenizer = AutoTokenizer.from_pretrained(model_dir)
-        model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
-        inputs = tokenizer(original_text, return_tensors="pt", padding=True)
-        germans = model.generate(
-            **inputs,
-            max_length=128,
-            num_beams=5,
+
+        model = MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
+        tokenizer = MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
+
+        tokenizer.src_lang = "en_XX"
+        encoded_en = tokenizer(original_text, return_tensors="pt")
+        generated_tokens = model.generate(
+            **encoded_en,
+            forced_bos_token_id=tokenizer.lang_code_to_id["de_DE"]
         )
-        translation_text = tokenizer.batch_decode(germans, skip_special_tokens=True)[0]
+        translation_text = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
+
     elif select_language == "Russian":
         translation_text = ""
     elif select_language == "French":
