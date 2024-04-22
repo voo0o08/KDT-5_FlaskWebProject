@@ -162,7 +162,6 @@ cython_debug/
 
 이현길/Bible_trans/static/lang_files/
 이현길/Bible_trans/notebook/results/
-Team4/Bible_Translator/static/french/results/
 박희진/de_vocab_transform.pkl
 박희진/en_vocab_transform.pkl
 박희진/en2de.pt
@@ -171,4 +170,8 @@ Team4/Bible_Translator/static/french/results/
 박희진/model
 박희진/data
 박희진/tok_distribution.png
-Team4/Bible_Translator/static/german/
+
+Team4/Bible_Translator/static/french/results/
+Team4/Bible_Translator/static/korean/result2/
+Team4/Bible_Translator/static/german/results/
+Team4/Bible_Translator/static/russian/result/
