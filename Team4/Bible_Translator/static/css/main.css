@@ -18,9 +18,8 @@ fieldset {
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* 수평 가운데 정렬 */
+    margin-top: 20px; /* 위쪽 여백 설정 */
+    margin-bottom: 20px; /* 아래쪽 여백 설정 */
 }
 
 .icon-container {
