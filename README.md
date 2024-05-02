@@ -14,7 +14,7 @@
 
 
 <br>
-<hr>
+<br>
 <br>
 
 <details>
