@@ -8,13 +8,6 @@
 - kaggle
 (https://www.kaggle.com/datasets/oswinrh/bible )
   
-#### 기능설계서
-
-![image](https://github.com/KDT5-Web-3team/KDT-5_WebProject/assets/155441547/90cb4921-2d3e-44a6-b1e1-c0c7df7e25cf)
-
-
-
-
 
 
 
