@@ -10,13 +10,8 @@
   
 
 
-
-
-
 <br>
 <br>
-<br>
-
 <details>
   <summary>
     이현길 ( 영어 -> 프랑스어 ) 
